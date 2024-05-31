@@ -5,15 +5,13 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { useNotificationProvider } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
 
-import dataProvider, {
-  GraphQLClient,
-  liveProvider,
-} from "@refinedev/nestjs-query";
+import { dataProvider, liveProvider } from "./providers";
 import routerBindings, {
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { App as AntdApp } from "antd"; 
+import { App as AntdApp } from "antd";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
@@ -24,11 +22,12 @@ function App() {
     <BrowserRouter>
       <GitHubBanner />
       <RefineKbarProvider>
+        
           <AntdApp>
             <DevtoolsProvider>
               <Refine
-                //dataProvider={dataProvider(gqlClient)}
-                //liveProvider={liveProvider(wsClient)}
+                dataProvider={dataProvider}
+                liveProvider={liveProvider}
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
                 //authProvider={}
@@ -36,7 +35,7 @@ function App() {
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,
                   useNewQueryKeys: true,
-                  projectId: "WCYMLv-88OC0w-fsofi4",
+                  projectId: "S5s4BH-HmQ70B-44Ju50",
                   liveMode: "auto",
                 }}
               >
@@ -50,9 +49,11 @@ function App() {
               <DevtoolsPanel />
             </DevtoolsProvider>
           </AntdApp>
+    
       </RefineKbarProvider>
     </BrowserRouter>
   );
 }
 
 export default App;
+//29:35
